@@ -1,27 +1,81 @@
+/* Cards block — Queensland brand */
 .cards > ul {
   list-style: none;
   margin: 0;
   padding: 0;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(257px, 1fr));
-  gap: 24px;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 20px;
 }
 
 .cards > ul > li {
-  border: 1px solid #dadada;
-  background-color: var(--background-color);
+  background: white;
+  overflow: hidden;
+  border: none;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  transition: transform 0.2s, box-shadow 0.2s;
 }
 
-.cards .cards-card-body {
-  margin: 16px;
+.cards > ul > li:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.15);
 }
 
+/* Image column */
 .cards .cards-card-image {
   line-height: 0;
+  overflow: hidden;
 }
 
-.cards > ul > li img {
+.cards .cards-card-image img,
+.cards .cards-card-image picture img {
   width: 100%;
-  aspect-ratio: 4 / 3;
+  height: 200px;
   object-fit: cover;
+  transition: transform 0.3s;
+}
+
+.cards > ul > li:hover .cards-card-image img {
+  transform: scale(1.05);
+}
+
+/* Body column */
+.cards .cards-card-body {
+  padding: 16px;
+}
+
+.cards .cards-card-body p {
+  margin: 0 0 8px;
+  font-size: 14px;
+  color: #666;
+}
+
+.cards .cards-card-body em {
+  font-style: normal;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: #009CA6;
+  font-weight: 600;
+}
+
+.cards .cards-card-body strong {
+  display: block;
+  font-size: 15px;
+  color: #1a1a1a;
+  margin-bottom: 8px;
+  line-height: 1.35;
+}
+
+.cards .cards-card-body a {
+  color: #009CA6;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.cards .cards-card-body a:hover {
+  color: #1e2f38;
 }

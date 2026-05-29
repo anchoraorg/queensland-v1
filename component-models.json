@@ -145,11 +145,11 @@
     "id": "card",
     "fields": [
       {
-        "component": "reference",
+        "component": "richtext",
         "valueType": "string",
         "name": "image",
-        "label": "Image",
-        "multi": false
+        "label": "Image HTML",
+        "value": ""
       },
       {
         "component": "richtext",
@@ -219,11 +219,11 @@
     "id": "carousel-item",
     "fields": [
       {
-        "component": "reference",
+        "component": "richtext",
         "valueType": "string",
         "name": "image",
-        "label": "Image",
-        "multi": false
+        "label": "Image HTML",
+        "value": ""
       },
       {
         "component": "text",

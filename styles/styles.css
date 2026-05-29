@@ -11,17 +11,20 @@
  */
 
 :root {
-  /* colors */
+  /* colors — Queensland brand */
   --background-color: white;
-  --light-color: #f8f8f8;
-  --dark-color: #505050;
-  --text-color: #131313;
-  --link-color: #3b63fb;
-  --link-hover-color: #1d3ecf;
+  --light-color: #f5f5f5;
+  --dark-color: #1e2f38;
+  --text-color: #1a1a1a;
+  --link-color: #009CA6;
+  --link-hover-color: #007a85;
+  --brand-gold: #FFC54D;
+  --brand-teal: #009CA6;
+  --brand-slate: #586F78;
 
-  /* fonts */
-  --body-font-family: roboto, roboto-fallback, sans-serif;
-  --heading-font-family: roboto-condensed, roboto-condensed-fallback, sans-serif;
+  /* fonts — Queensland brand */
+  --body-font-family: "Source Sans Pro", "Source Sans 3", helvetica, sans-serif;
+  --heading-font-family: "trade-gothic-next-compressed", "Arial Narrow", "Impact", sans-serif;
 
   /* body sizes */
   --body-font-size-m: 22px;
@@ -42,15 +45,9 @@
 
 /* fallback fonts */
 @font-face {
-  font-family: roboto-condensed-fallback;
-  size-adjust: 88.82%;
-  src: local('Arial');
-}
-
-@font-face {
-  font-family: roboto-fallback;
-  size-adjust: 99.529%;
-  src: local('Arial');
+  font-family: "trade-gothic-next-compressed";
+  size-adjust: 80%;
+  src: local('Arial Narrow');
 }
 
 @media (width >= 900px) {
@@ -322,4 +319,59 @@ main .section.highlight {
   background-color: var(--light-color);
   margin: 0;
   padding: 40px 0;
+}
+
+/* Queensland brand heading styles */
+h1, h2, h3 {
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--brand-gold);
+}
+
+h1 {
+  color: white;
+  font-size: var(--heading-font-size-xxl);
+}
+
+/* Dark section override */
+.section.dark-section-wrapper,
+[data-section-status="loaded"].dark,
+.section[style*="background"] {
+  background-color: var(--dark-color);
+  color: white;
+}
+
+.section.dark-section-wrapper h2,
+.section.dark-section-wrapper p,
+.section.dark-section-wrapper a {
+  color: white;
+}
+
+/* Buttons */
+.button {
+  background-color: var(--brand-slate);
+  color: white;
+  border: none;
+  border-radius: 2px;
+  padding: 12px 28px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-weight: 700;
+  font-size: 14px;
+}
+
+.button:hover {
+  background-color: var(--brand-teal);
+  color: white;
+}
+
+/* Section spacing */
+main .section {
+  padding: 40px 24px;
+}
+
+@media (width >= 900px) {
+  main .section {
+    padding: 60px 48px;
+  }
 }

@@ -1,4 +1,4 @@
-/* Carousel block */
+/* Carousel block — Queensland brand */
 .carousel-container {
   max-width: unset;
   padding: 0;
@@ -8,7 +8,8 @@
   position: relative;
   overflow: hidden;
   width: 100%;
-  background: #1a1a1a;
+  background: #1e2f38;
+  min-height: 400px;
 }
 
 /* Slides */
@@ -21,54 +22,70 @@
   display: block;
 }
 
+/* Each slide row: first child = image, rest = text overlay */
 .carousel-slide > div {
   position: relative;
 }
 
-.carousel-slide picture {
+/* Image column */
+.carousel-slide > div > div:first-child picture {
   display: block;
   width: 100%;
 }
 
-.carousel-slide picture img {
+.carousel-slide > div > div:first-child img,
+.carousel-slide > div > div:first-child picture img {
   display: block;
   width: 100%;
   height: 480px;
   object-fit: cover;
+  object-position: center;
 }
 
-/* Text overlay on slides */
-.carousel-slide > div > :is(h1, h2, h3, h4, p) {
+/* Text overlay on top of image */
+.carousel-slide > div > div:not(:first-child) {
   position: absolute;
-  bottom: 80px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 90%;
-  max-width: 900px;
-  color: #fff;
-  text-align: center;
-  text-shadow: 0 2px 8px rgba(0,0,0,0.6);
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 60px 48px 80px;
+  background: linear-gradient(to top, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.3) 60%, transparent 100%);
+  color: white;
+}
+
+.carousel-slide > div > div:not(:first-child) h1,
+.carousel-slide > div > div:not(:first-child) h2,
+.carousel-slide > div > div:not(:first-child) h3 {
+  color: #FFC54D;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-size: clamp(2rem, 5vw, 3.5rem);
   margin: 0 0 12px;
+  text-shadow: 0 2px 8px rgba(0,0,0,0.5);
 }
 
-.carousel-slide > div > p:last-of-type a {
+.carousel-slide > div > div:not(:first-child) p {
+  color: rgba(255,255,255,0.9);
+  margin: 0 0 16px;
+  font-size: 1.05rem;
+  max-width: 600px;
+}
+
+.carousel-slide > div > div:not(:first-child) a {
   display: inline-block;
-  background: var(--link-color, #005eb8);
-  color: #fff;
+  background: #586F78;
+  color: white;
   padding: 12px 28px;
-  border-radius: 4px;
   text-decoration: none;
-  font-weight: 600;
-  position: absolute;
-  bottom: 24px;
-  left: 50%;
-  transform: translateX(-50%);
-  white-space: nowrap;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-size: 13px;
   transition: background 0.2s;
 }
 
-.carousel-slide > div > p:last-of-type a:hover {
-  background: #004a94;
+.carousel-slide > div > div:not(:first-child) a:hover {
+  background: #009CA6;
 }
 
 /* Nav buttons */
@@ -81,7 +98,7 @@
   border: none;
   font-size: 2.5rem;
   line-height: 1;
-  padding: 8px 16px;
+  padding: 8px 18px;
   cursor: pointer;
   z-index: 10;
   transition: background 0.2s;
@@ -97,7 +114,7 @@
 /* Dots */
 .carousel-dots {
   position: absolute;
-  bottom: 12px;
+  bottom: 16px;
   left: 50%;
   transform: translateX(-50%);
   display: flex;
@@ -109,7 +126,7 @@
   width: 10px;
   height: 10px;
   border-radius: 50%;
-  border: 2px solid #fff;
+  border: 2px solid rgba(255,255,255,0.8);
   background: transparent;
   cursor: pointer;
   padding: 0;
@@ -117,16 +134,13 @@
 }
 
 .carousel-dot--active {
-  background: #fff;
+  background: #FFC54D;
+  border-color: #FFC54D;
 }
 
-/* Responsive */
 @media (width >= 900px) {
-  .carousel-slide picture img {
+  .carousel-slide > div > div:first-child img,
+  .carousel-slide > div > div:first-child picture img {
     height: 600px;
-  }
-
-  .carousel-slide > div > :is(h1, h2, h3, h4) {
-    font-size: 2.5rem;
   }
 }

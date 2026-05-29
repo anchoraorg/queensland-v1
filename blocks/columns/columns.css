@@ -1,33 +1,39 @@
+/* Columns block — Queensland brand */
 .columns > div {
   display: flex;
-  flex-direction: column;
-}
-
-.columns img {
-  width: 100%;
+  gap: 32px;
+  align-items: center;
 }
 
 .columns > div > div {
-  order: 1;
+  flex: 1;
 }
 
-.columns > div > .columns-img-col {
-  order: 0;
+.columns-img-col {
+  line-height: 0;
 }
 
-.columns > div > .columns-img-col img {
-  display: block;
+.columns-img-col img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  aspect-ratio: 4/3;
 }
 
-@media (width >= 900px) {
+/* Dark section newsletter */
+.dark .columns h2 {
+  color: #FFC54D;
+  font-size: clamp(1.8rem, 3vw, 2.5rem);
+}
+
+.dark .columns p {
+  color: rgba(255,255,255,0.85);
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+@media (width < 900px) {
   .columns > div {
-    align-items: center;
-    flex-direction: unset;
-    gap: 24px;
-  }
-
-  .columns > div > div {
-    flex: 1;
-    order: unset;
+    flex-direction: column;
   }
 }
