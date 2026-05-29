@@ -1,6 +1,20 @@
 import { createOptimizedPicture } from '../../scripts/aem.js';
 import { moveInstrumentation } from '../../scripts/scripts.js';
 
+/**
+ * Build a picture element from a plain-text image URL stored in a richtext cell.
+ */
+function buildPictureFromUrl(url, alt = '', eager = false) {
+  return createOptimizedPicture(url, alt, eager, [
+    { media: '(min-width: 900px)', width: '1200' },
+    { width: '750' },
+  ]);
+}
+
+function isImageUrl(text) {
+  return /\.(jpg|jpeg|png|webp|svg|avif)(\?.*)?$/i.test(text.trim());
+}
+
 export default function decorate(block) {
   const slides = [...block.children];
   if (slides.length === 0) return;
@@ -11,7 +25,18 @@ export default function decorate(block) {
     slide.setAttribute('data-slide-index', i);
     if (i === 0) slide.classList.add('carousel-slide--active');
 
-    // Optimise images
+    // Handle plain-text image URLs in the first cell
+    const firstCell = slide.children[0];
+    if (firstCell) {
+      const text = firstCell.textContent.trim();
+      if (isImageUrl(text) && !firstCell.querySelector('picture')) {
+        const pic = buildPictureFromUrl(text, '', i === 0);
+        firstCell.innerHTML = '';
+        firstCell.appendChild(pic);
+      }
+    }
+
+    // Optimise any picture elements (including those just created above)
     slide.querySelectorAll('picture > img').forEach((img) => {
       const optimized = createOptimizedPicture(img.src, img.alt, i === 0, [
         { media: '(min-width: 900px)', width: '1200' },
